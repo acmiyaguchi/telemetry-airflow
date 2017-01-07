@@ -16,7 +16,7 @@ git checkout topline-report
 sbt assembly
 spark-submit --master yarn \
              --deploy-mode client \
-             --class com.mozilla.telemetry.views.MainSummaryView \
+             --class com.mozilla.telemetry.views.ToplineSummary \
              target/scala-2.11/telemetry-batch-view-1.1.jar \
              --report_start $report_start \
              --mode $mode \
