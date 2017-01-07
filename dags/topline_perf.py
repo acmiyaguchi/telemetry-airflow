@@ -10,7 +10,7 @@ default_args = {
         'email': ['telemetry-alerts@mozilla.com', 'amiyaguchi@mozilla.com'],
         'email_on_failure': True,
         'email_on_retry': True,
-        'retries': 2,
+        'retries': 0,
         'retry_delay': timedelta(minutes=30),
         }
 
