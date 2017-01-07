@@ -6,6 +6,7 @@ from utils.constants import DS_WEEKLY
 default_args = {
         'owner': 'amiyaguchi@mozilla.com',
         'depends_on_past': False,
+        'start_date': '20170101',
         'email': ['telemetry-alerts@mozilla.com', 'amiyaguchi@mozilla.com'],
         'email_on_failure': True,
         'email_on_retry': True,
@@ -22,7 +23,7 @@ for instance_count in instance_counts:
     for sample in samples:
         EMRSparkOperator(
                 task_id = (
-                    "topline_perf_instances={}_sample={}"
+                    "topline_perf-instances_{}-sample_{}"
                     .format(instance_count, sample)
                     ),
                 job_name = (
@@ -33,13 +34,13 @@ for instance_count in instance_counts:
                 release_label = "emr-5.0.0",
                 instance_count = instance_count,
                 env = {
-                    "report_date": "20161101",
+                    "report_start": "20161101",
                     "mode": "monthly",
                     "sample": sample
                     },
                 uri = (
                     "https://raw.githubusercontent.com/acmiyaguchi/"
-                    "telemetry-batch-view/topline-report/"
+                    "telemetry-airflow/topline_perf/"
                     "jobs/topline.sh"
                     ),
                 output_visibility = "public",

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ -z "$report_date" || -z "$mode" ]]; then
+if [[ -z "$report_start" || -z "$mode" ]]; then
    echo "Missing arguments!" 1>&2
    exit 1
 fi
@@ -18,6 +18,6 @@ spark-submit --master yarn \
              --deploy-mode client \
              --class com.mozilla.telemetry.views.MainSummaryView \
              target/scala-2.11/telemetry-batch-view-1.1.jar \
-             --report_date $report_date \
+             --report_start $report_start \
              --mode $mode \
              $sample_option
