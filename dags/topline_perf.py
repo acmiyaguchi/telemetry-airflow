@@ -17,7 +17,7 @@ default_args = {
 dag = DAG('topline_perf', default_args=default_args, schedule_interval=None)
 
 instance_counts = [1]
-samples = [3]
+samples = [1]
 
 for instance_count in instance_counts:
     for sample in samples:
@@ -27,15 +27,16 @@ for instance_count in instance_counts:
                     .format(instance_count, sample)
                     ),
                 job_name = (
-                    "Topline performance, instances={}, count={}"
+                    "Topline Performance Tests - instances={}, sample={}"
                     .format(instance_count, sample)
                     ),
-                execution_timeout = timedelta(hours=8),
+                execution_timeout = timedelta(hours=12),
                 release_label = "emr-5.0.0",
                 instance_count = instance_count,
                 env = {
                     "report_start": "20161101",
-                    "mode": "monthly",
+                    "mode": "weekly",
+                    "instances": instance_count,
                     "sample": sample
                     },
                 uri = (
