@@ -16,8 +16,8 @@ default_args = {
 
 dag = DAG('topline_perf', default_args=default_args, schedule_interval=None)
 
-instance_counts = [1]
-samples = [1]
+instance_counts = [5]
+samples = [100]
 
 for instance_count in instance_counts:
     for sample in samples:
@@ -37,7 +37,6 @@ for instance_count in instance_counts:
                     "report_start": "20161101",
                     "mode": "weekly",
                     "instances": instance_count,
-                    "sample": sample
                     },
                 uri = (
                     "https://raw.githubusercontent.com/acmiyaguchi/"

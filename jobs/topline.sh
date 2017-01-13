@@ -28,6 +28,10 @@ spark-submit --master yarn \
 # responses from the rest api are in JSON.
 # http://stackoverflow.com/questions/1955505/parsing-json-with-unix-tools
 
+if [[ -z "$sample" ]]; then
+    sample=100
+fi
+
 eventlog="topline_eventlog_${mode}_${instances}_${sample}.zip"
 app_id=`curl -s 'localhost:18080/api/v1/applications' | \
     python -c "import sys, json; print json.load(sys.stdin)[0]['id']"`
