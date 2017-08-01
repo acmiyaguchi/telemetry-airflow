@@ -116,7 +116,7 @@ t10 = EMRSparkOperator(task_id="experiments_aggregates",
                        owner="ssuh@mozilla.com",
                        email=["telemetry-alerts@mozilla.com", "frank@mozilla.com", "ssuh@mozilla.com"],
                        env={"date": "{{ ds_nodash }}", "bucket": "{{ task.__class__.private_output_bucket }}"},
-                       uri="https://raw.githubusercontent.com/mozilla/telemetry-airflow/master/jobs/experiment_aggregates_view.sh",
+                       uri="https://raw.githubusercontent.com/acmiyaguchi/telemetry-airflow/bug-1384324-experiments-aggregates/jobs/experiment_aggregates_view.sh",
                        dag=dag)
 
 t11 = EMRSparkOperator(task_id="experiments_aggregates_import",
