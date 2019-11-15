@@ -19,12 +19,13 @@ def client():
     under test in the same scope as the @mock_s3 decorator. See
     https://github.com/spulec/moto/issues/620.
     """
-    mock_s3().start()
+    mock = mock_s3()
+    mock.start()
     client = boto3.resource("s3")
     client.create_bucket(Bucket="telemetry-test-bucket")
     client.create_bucket(Bucket="telemetry-airflow")
     yield client
-    mock_s3().stop()
+    mock.stop()
 
 
 @pytest.fixture()
